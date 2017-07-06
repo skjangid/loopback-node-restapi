@@ -1,0 +1,30 @@
+{
+  "name": "Language",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "language": {
+      "type": "string",
+      "require": true
+    },
+    "status": {
+      "type": "number",
+      "default": 1
+    }
+  },
+  "hidden": [""],
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+    ],
+  "methods": {}
+}

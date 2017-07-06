@@ -1,0 +1,19 @@
+{
+  "name": "CompanyTherapist",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "threapistStatus": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "hidden": [""],
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

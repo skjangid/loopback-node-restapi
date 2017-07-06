@@ -1,0 +1,14 @@
+{
+  "name": "MemberSpecialist",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "hidden": ["id"],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

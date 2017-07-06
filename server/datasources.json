@@ -1,0 +1,41 @@
+{
+  "db": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "url": "",
+    "database": "relief",
+    "name": "db",
+    "connector": "mongodb",
+    "allowExtendedOperators": true
+  },
+  "myEmailDataSource": {
+    "name": "myEmailDataSource",
+    "connector": "mail",
+    "transports": [{
+      "type": "SMTP",
+      "host": "smtp.gmail.com",
+      "secure": true,
+      "port": 465,
+      "auth": {
+        "user": "smtp18181818@gmail.com",
+        "pass": "V>O&w]dD=)839dk"
+      }
+
+    }],
+    "allowedSlug": ["contact-us", "share-email"]
+  },
+  "file": {
+    "name": "file",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./client",
+    "maxFileSize": "2097152000",
+    "allowedContentTypes": [
+      "image/png", "image/jpeg", "image/jpg",
+      "video/webm", "video/ogg", "video/mp4",
+      "audio/webm", "audio/ogg", "audio/mp3",
+      "text/csv", "application/csv", "application/vnd.ms-excel",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    ]
+  }
+}

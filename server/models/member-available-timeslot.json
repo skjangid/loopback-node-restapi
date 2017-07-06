@@ -1,0 +1,96 @@
+{
+  "name": "MemberAvailableTimeslot",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "status": {
+      "type": "number",
+      "default": 1
+    }
+  },
+  "hidden": [""],
+  "validations": [],
+  "relations": {
+    "therapistAvailability": {
+      "type": "belongsTo",
+      "model": "MemberAvailability",
+      "foreignKey": "availabilityId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "*"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findOne"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "count"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "socialLogin"
+    },{
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "getMatches"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "changePassword"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "setPassword"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "count"
+    }
+  ],
+  "methods": {}
+}

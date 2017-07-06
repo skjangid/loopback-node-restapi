@@ -1,0 +1,32 @@
+{
+  "restApiRoot": "/api/v1",
+  "host": "127.0.0.1",
+  "port": 3009,
+   "domain": {
+    "host": "127.0.0.1:3009",
+    "port": 443
+  },
+  "socket": {
+    "port": 3009
+  },
+  "remoting": {
+    "context": false,
+    "rest": {
+      "normalizeHttpPath": false,
+      "xml": false
+    },
+    "json": {
+      "strict": false,
+      "limit": "50mb"
+    },
+    "urlencoded": {
+      "extended": true,
+      "limit": "50mb"
+    },
+    "cors": false,
+    "errorHandler": {
+      "debug": false
+    }
+  },
+  "legacyExplorer": false
+}

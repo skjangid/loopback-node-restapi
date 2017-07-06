@@ -1,0 +1,117 @@
+{
+  "name": "Notification",
+  "base": "PersistedModel",
+  "strict": "validate",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "senderId": {
+      "type": "string",
+      "required": true
+    },
+    "companyId": {
+      "type": "string"
+    },
+    "receiverId": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "read": {
+      "type": "boolean",
+      "default": false
+    },
+    "created": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "source": {
+      "type": "string",
+      "default": "W"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "receiver": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "receiverId"
+    },
+    "sender": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "senderId"
+    },
+    "company": {
+      "type": "belongsTo",
+      "model": "CompanyProfile",
+      "foreignKey": "companyId"
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "updateAttributes"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "deleteById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findOne"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "count"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "readAll"
+    },{
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "deleteAll"
+    }
+  ],
+  "methods": {}
+}

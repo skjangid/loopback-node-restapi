@@ -1,0 +1,14 @@
+{
+  "name": "MemberLanguage",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "hidden": [""],
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

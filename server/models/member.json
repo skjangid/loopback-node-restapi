@@ -1,0 +1,322 @@
+{
+  "name": "Member",
+  "base": "User",
+  "strict": true,
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "data": {
+      "type": "object",
+      "default": {
+        "username": "",
+        "image": "",
+        "about_me" : "",
+        "image" : ""
+      }
+    },
+    "language" : {
+      "type": [
+        "string"
+      ],
+      "default": []
+    },
+    "mobile_verification_code" :{
+        "type": "number",
+        "default": 0    
+    },
+    "mobile_verification_status" :{
+      "type": "number",
+      "default": 0
+    },
+    "loc": {
+      "type" : "object",
+      "default": {
+        "lat": 0,
+        "lng": 0
+      }
+    },
+    "contact_info": {
+      "type": "object",
+      "default": {
+        "address1": "",
+        "address2": "",
+        "country": {
+          "name": "",
+          "iso_code": ""
+        },
+        "state": {
+          "name": "",
+          "iso_code": ""
+        },
+        "city": {
+          "name": "",
+          "iso_code": ""
+        },
+        "postal_code": "",
+        "phone_no": "",
+        "contact_no": ""
+      }
+    },
+    "therapistId" : {
+      "type": [
+        "string"
+      ],
+      "default": []
+    },
+    "experianceArea" : {
+      "type": [
+        "string"
+      ],
+      "default": []
+    },
+    "specialist": {
+      "type": [
+        "string"
+      ],
+      "default": []
+    },
+    "conversationType": {
+      "type": [
+        {
+          "chat": "number",
+          "audio": "number",
+          "video": "number"
+        }
+      ],
+      "default": [
+        {
+          "chat": 0,
+          "audio": 0,
+          "video": 0
+        }
+      ]
+    },
+    "hourly_rate": {
+      "type": "number",
+      "default": 0
+    },
+    "employment_history": {
+      "type": [
+        {
+          "company": "string",
+          "role": "string",
+          "from": "string",
+          "to": "string",
+          "company_address": "string"
+        }
+      ],
+      "default": [
+        {
+          "company": "",
+          "role": "",
+          "from": "",
+          "to": "",
+          "company_address": ""
+        }
+      ]
+    },
+    "education": {
+      "type": [
+        {
+          "name": "string",
+          "degree": "string",
+          "from": "string",
+          "to": "string",
+          "address": "string"
+        }
+      ],
+      "default": [
+        {
+          "name": "",
+          "degree": "",
+          "from": "",
+          "to": "",
+          "address": ""
+        }
+      ]
+    },
+    "modified": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "memberSince": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "views": {
+      "type": "number",
+      "default": 0
+    },
+    "status": {
+      "type": "number",
+      "default": 1
+    },
+    "profileComplete": {
+      "type": "number",
+      "default": 0
+    },
+    "source": {
+      "type": "string",
+      "default": "W"
+    },
+    "member_role": {
+      "type": "string"
+    },
+    "memberRoleId": {
+      "type": "string",
+      "required": true
+    },
+    "lastUpdated": false,
+    "realm": false,
+    "username": false,
+    "credentials": false,
+    "challenges": false
+  },
+  "hidden": [""],
+  "validations": [],
+  "relations": {
+    "notification": {
+      "type": "hasMany",
+      "model": "Notification",
+      "foreignKey": "memberId"
+    },
+    "memberRole": {
+      "type": "belongsTo",
+      "model": "MemberRole",
+      "foreignKey": "memberRoleId"
+    },
+    "languages": {
+      "type": "hasAndBelongsToMany",
+      "model": "Language",
+      "through": "MemberLanguage"
+    },
+    "therapistList": {
+      "type": "hasAndBelongsToMany",
+      "model": "Member",
+      "through": "CompanyTherapist",
+      "foreignKey": "memberId"
+    },
+    "therapistAvailability": {
+      "type": "hasMany",
+      "model": "MemberAvailability",
+      "foreignKey": "memberId"
+    },
+    "therapistBooking": {
+      "type": "hasMany",
+      "model": "Booking",
+      "foreignKey": "therapistId"
+    },
+    "companyBooking": {
+      "type": "hasMany",
+      "model": "Booking",
+      "foreignKey": "companyId"
+    },
+    "therapistReview": {
+      "type": "hasMany",
+      "model": "Review",
+      "foreignKey": "therapistId"
+    },
+    "areaOfExperiance": {
+      "type": "hasAndBelongsToMany",
+      "model": "Category",
+      "through": "MemberAreaOfExperiance"
+    },
+    "specialistData": {
+      "type": "hasAndBelongsToMany",
+      "model": "Category",
+      "through": "MemberSpecialist"
+    }
+  },
+  "mixins": {
+    "Counts": true
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "*"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "deleteById"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "updateAttributes"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findOne"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "count"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "socialLogin"
+    },{
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "getMatches"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "changePassword"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "setPassword"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "count"
+    }
+  ],
+  "methods": {}
+}

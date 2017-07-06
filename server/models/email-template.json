@@ -1,0 +1,79 @@
+{
+  "name": "EmailTemplate",
+  "base": "PersistedModel",
+  "strict": "validate",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "subject": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string"
+    },
+    "status": {
+      "type": "number",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "index": {
+        "unique": true
+      }
+    },
+    "modified": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "source": {
+      "type": "string",
+      "default": "W"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findOne"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "sendMail"
+    }
+  ],
+  "methods": {}
+}

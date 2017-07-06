@@ -1,0 +1,25 @@
+{
+  "name": "MemberRole",
+  "base": "PersistedModel",
+  "strict": "validate",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "role": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "hidden": [""],
+  "validations": [],
+  "relations": {
+    "member": {
+      "type": "hasMany",
+      "model": "Member"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,40 @@
+{
+  "name": "Category",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "category": {
+      "type": "string",
+      "require": true
+    },
+    "parent": {
+      "type": "string",
+      "default": 0
+    },
+    "status": {
+      "type": "number",
+      "default": 1
+    }
+  },
+  "hidden": [""],
+  "validations": [],
+  "relations": {
+    "therapistProfile": {
+      "type": "belongsTo",
+      "model": "TherapistProfile",
+      "foreignKey": "specialistId"
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+    ],
+  "methods": {}
+}

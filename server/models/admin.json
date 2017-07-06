@@ -1,0 +1,31 @@
+{
+  "name": "admin",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

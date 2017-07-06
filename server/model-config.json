@@ -1,0 +1,109 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../node_modules/loopback-ds-timestamp-mixin",
+      "../common/mixins",
+      "../node_modules/loopback-ds-computed-mixin/lib",
+      "./mixins"
+    ]
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "admin": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Booking": {
+    "dataSource": "db",
+    "public": true
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Category": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Cms": {
+    "dataSource": "db",
+    "public": true
+  },
+  "CompanyTherapist": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Container": {
+    "dataSource": "file",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "myEmailDataSource",
+    "public": true
+  },
+  "EmailTemplate": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Language": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Member": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": true
+    }
+  },
+  "MemberLanguage": {
+    "dataSource": "db",
+    "public": false
+  },
+  "MemberRole": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Notification": {
+    "dataSource": "db",
+    "public": true
+  },
+  "SavedCardDetail": {
+    "dataSource": "db",
+    "public": true
+  },
+  "MemberAvailability": {
+    "dataSource": "db",
+    "public": true
+  },
+  "MemberAvailableTimeslot": {
+    "dataSource": "db",
+    "public": true
+  },
+  "MemberSpecialist": {
+    "dataSource": "db",
+    "public": false
+  },
+  "MemberAreaOfExperiance": {
+    "dataSource": "db",
+    "public": false
+  }
+}

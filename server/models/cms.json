@@ -1,0 +1,46 @@
+{
+  "name": "Cms",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "require": true
+    },
+    "company_id": {
+      "type": "string",
+      "require": true,
+      "default": 0
+    },
+    "slug": {
+      "type": "string",
+      "require": true
+    },
+    "content": {
+      "type": "string",
+      "require": true
+    },
+    "status": {
+      "type": "number",
+      "default": 1
+    },
+    "source": {
+      "type": "string",
+      "default": "W"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+    ],
+  "methods": {}
+}
